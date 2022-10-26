@@ -1,0 +1,490 @@
+/*
+=============== 
+Fonts
+===============
+*/
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --clr-primary: #fa4a0c;
+  --clr-primary-dark: #312e3c;
+  --clr-primary-light: #ededed;
+  --clr-grey-1: #102a42;
+  --clr-grey-5: #617d98;
+  --clr-grey-10: #f1f5f8;
+  --clr-white: #fff;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --ff-primary: "Raleway", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --large-screen-width: 1170px;
+  --small-screen-width: 90vw;
+  --fixed-width: 50rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-primary);
+  background: var(--clr-primary-light);
+  color: var(--clr-primary-dark);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  display: block;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/* more global css */
+
+.btn {
+  text-transform: uppercase;
+  background-color: var(--clr-primary);
+  color: var(--clr-grey-10);
+  padding: 1rem 1.25rem;
+
+  display: inline-block;
+  font-weight: 700;
+  transition: var(--transition);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  color: var(--clr-primary-light);
+  background: var(--clr-primary);
+}
+
+/* Initial Page */
+
+.icon {
+  background-color: #f1f5f8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  height: 6rem;
+}
+.logo-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.food-icon {
+  width: 100px;
+  height: 100px;
+  fill: #fff;
+}
+.main-page {
+  background-color: var(--clr-primary);
+  display: grid;
+  width: 100vw;
+  place-items: center;
+  height: 100vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 4rem;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: normal;
+  font-family: var(--ff-primary);
+}
+
+.hero {
+  height: 40vh;
+  width: 100%;
+  /* background-image: url("../public/assets/quadro-circular-de-alimentos-de-vista-superior_23-2148723455.jpg"); */
+  background-size: cover;
+  background-position: center;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero > h3 {
+  font-family: var(--ff-primary);
+  font-weight: bold;
+  color: var(--clr-grey-5);
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 1px 1px #ccc;
+}
+
+/* login Page */
+
+.section-center {
+  display: grid;
+  place-items: center;
+
+  grid-template-rows: 0.5fr 0.5fr;
+  height: 100vh;
+}
+.login-container {
+  height: 50vh;
+  width: 100vw;
+  border-radius: 0.8rem;
+  padding-bottom: 0.25rem;
+  background-color: #fff;
+  grid-template-rows: 3fr 1fr 1fr;
+  display: grid;
+}
+.icon-container {
+  display: grid;
+  grid-row: 1/4;
+  place-items: center;
+  height: 40vh;
+}
+.button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 100%;
+  height: 5vh;
+}
+
+.login-btn {
+  border: none;
+  padding: 0 1rem;
+  background-color: transparent;
+  text-transform: capitalize;
+  color: #222;
+}
+
+.login-btn:active {
+  border-bottom: 1px solid #fa4a0c;
+}
+
+/* main page */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.function-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #555;
+}
+
+.main-page {
+}
+
+.title-main {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.categories-list {
+  color: #fa4a0c;
+  display: flex;
+}
+
+.cat-item {
+  border-bottom: #fa4a0c;
+  font-size: 0.75rem;
+  margin: 0.5rem;
+  padding: 0.25rem;
+  color: #aaa;
+  font-family: var(--ff-primary);
+  font-weight: 600;
+}
+
+.cat-item:active {
+  border-bottom: 3px solid #fa4a0c;
+}
+
+/* dish component */
+.dish {
+  width: 60vw;
+  margin: 1rem;
+  max-width: 400px;
+}
+
+.dish-name {
+  color: #312e3c;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.dish-img {
+  width: 20vw;
+
+  border-radius: 50%;
+}
+
+/* footer component */
+
+.footer {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 5vh;
+  padding: 1rem;
+  justify-content: space-around;
+}
+
+.footer-item {
+  margin: 0.5rem;
+  color: #aaa;
+}
+
+/* single product */
+
+.single-product-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.product-desc {
+  padding: 0.25rem;
+}
+
+.product-desc::first-letter {
+  text-transform: uppercase;
+  font-family: var(--ff-primary);
+  font-weight: 500;
+}
+
+.product-price {
+  color: #fa4a0c;
+  font-weight: 600;
+}
+
+.chevron {
+  width: 25px;
+  height: 25px;
+  color: #555;
+}
+
+/* Cart Page */
+
+.cart-main,
+.delivery-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.cart-bar-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Cart Item */
+
+.cart-item {
+  width: 85vw;
+  height: 18vh;
+  background-color: #f1f5f8;
+  border-radius: 0.6rem;
+  display: flex;
+  padding: 0.75rem;
+  position: relative;
+  margin: 0.75rem 0.25rem;
+}
+
+.cart-img {
+  width: 30vw;
+  height: 15vh;
+  border-radius: 0.3rem;
+  margin: 0.25rem;
+}
+
+.cart-details {
+  padding: 0.5rem;
+}
+
+.cart-details > h4 {
+  letter-spacing: 1px;
+}
+
+.toggle-item {
+  width: 4rem;
+  height: 2rem;
+  padding: 0.5rem;
+  background-color: #fa4a0c;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 7rem;
+  right: 1rem;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #f1f5f8;
+  font-size: 0.75rem;
+}
+
+.quantity {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f5f8;
+}
+
+/* Cart Container */
+
+.totals {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+}
+
+/* delivery component */
+
+.adress-info,
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 2rem 0;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.info {
+  border-bottom: 1px solid #bbb;
+  color: #222;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.address,
+.profile {
+  margin: 1.5rem;
+}
+
+.adress-details,
+.profile-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.adress-details > h3 {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+}
+
+.change-btn {
+  border: transparent;
+  background-color: transparent;
+  color: rgb(250, 74, 12, 0.8);
+  font-size: 1rem;
+}
+
+.checkout-totals {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 6rem;
+}
+
+/* update form component */
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-form label {
+  margin: 0.5rem 0;
+}
+
+.profile-form input[type="text"],
+input[type="number"],
+input[type="email"] {
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #bbb;
+
+  width: 100%;
+}
+
+.profile-form input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+  outline: none;
+}
