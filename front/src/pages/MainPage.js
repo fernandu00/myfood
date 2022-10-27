@@ -5,8 +5,10 @@ import { dishes } from "../data";
 import Dish from "../components/Dish";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MainPage = () => {
+  const { amount } = useSelector((store) => store.cart);
   return (
     <main className="main">
       <div className="toolbar">
@@ -16,7 +18,7 @@ const MainPage = () => {
             <HiOutlineShoppingCart className="function-icon" />
           </Link>
           <div className="amount-container">
-            <p className="total-amount">5</p>
+            <p className="total-amount">{amount}</p>
           </div>
         </div>
       </div>

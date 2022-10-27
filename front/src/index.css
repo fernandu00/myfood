@@ -382,7 +382,7 @@ p {
 
 .cart-item {
   width: 85vw;
-  height: 18vh;
+  height: 20vh;
   background-color: #f1f5f8;
   border-radius: 0.6rem;
   display: flex;
@@ -398,6 +398,10 @@ p {
   margin: 0.25rem;
 }
 
+.img-container {
+  display: flex;
+  flex-direction: column;
+}
 .cart-details {
   padding: 0.5rem;
 }
@@ -522,4 +526,14 @@ input[type="email"] {
 input[type="number"]:focus,
 input[type="email"]:focus {
   outline: none;
+}
+
+.clear-cart-btn {
+  text-align: center;
+  margin: 2rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
 }

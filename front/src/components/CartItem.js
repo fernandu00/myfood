@@ -1,22 +1,47 @@
 import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-const CartItem = () => {
+import { useDispatch } from "react-redux";
+import { increase, remove, decrease } from "../features/cart/cartSlice";
+const CartItem = ({ name, price, picture, amount, id }) => {
+  const dispatch = useDispatch();
+
   return (
     <article className="cart-item">
-      <img
-        className="cart-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/375px-Hamburger_%28black_bg%29.jpg"
-        alt="name"
-      />
+      <div className="img-container">
+        <img className="cart-img" src={picture} alt={name} />
+        <button
+          className="change-btn"
+          onClick={() => {
+            dispatch(remove(id));
+          }}
+        >
+          remover
+        </button>
+      </div>
+
       <div className="cart-details">
-        <h4>product name</h4>
-        <span className="product-price">$ product price</span>
+        <h4>{name}</h4>
+        <span className="product-price">$ {price}</span>
         <div className="toggle-item">
-          <button className="toggle-btn">
+          <button
+            className="toggle-btn"
+            onClick={() => {
+              if (amount === 1) {
+                dispatch(remove(id));
+                return;
+              }
+              dispatch(decrease(id));
+            }}
+          >
             <FaMinus />
           </button>
-          <span className="quantity">1</span>
-          <button className="toggle-btn">
+          <span className="quantity">{amount}</span>
+          <button
+            className="toggle-btn"
+            onClick={() => {
+              dispatch(increase(id));
+            }}
+          >
             <FaPlus />
           </button>
         </div>

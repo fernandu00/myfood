@@ -1,12 +1,15 @@
 import React from "react";
 import { FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Delivery from "../components/Delivery";
 
 const CheckoutDeliveryPage = () => {
   return (
     <main className="delivery-main">
       <div className="cart-bar-container">
-        <FaChevronLeft className="chevron" />
+        <Link to="/cart">
+          <FaChevronLeft className="chevron" />
+        </Link>
         <h3>Pedido</h3>
       </div>
       <Delivery />
