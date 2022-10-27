@@ -1,11 +1,14 @@
 import React from "react";
 
 import { FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const SingleProductPage = () => {
   return (
     <main className="single-product-main">
       <div className="container">
-        <FaChevronLeft className="chevron" />
+        <Link to="/main">
+          <FaChevronLeft className="chevron" />
+        </Link>
       </div>
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger_%28black_bg%29.jpg/375px-Hamburger_%28black_bg%29.jpg"

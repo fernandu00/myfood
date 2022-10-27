@@ -116,6 +116,11 @@ p {
   background: var(--clr-primary);
 }
 
+.initial-btn {
+  background-color: #f1f5f8;
+  color: #fa4a0c;
+}
+
 /* Initial Page */
 
 .icon {
@@ -224,7 +229,7 @@ p {
 .toolbar {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
 }
 
 .function-icon {
@@ -233,7 +238,11 @@ p {
   color: #555;
 }
 
-.main-page {
+.dishes-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  gap: 0.5rem;
 }
 
 .title-main {
@@ -264,7 +273,6 @@ p {
 
 /* dish component */
 .dish {
-  width: 60vw;
   margin: 1rem;
   max-width: 400px;
 }
@@ -277,9 +285,9 @@ p {
 }
 
 .dish-img {
-  width: 20vw;
-
-  border-radius: 50%;
+  width: 25vw;
+  height: 10vh;
+  border-radius: 0.3rem;
 }
 
 /* footer component */
@@ -289,8 +297,11 @@ p {
   align-items: center;
   width: 100vw;
   height: 5vh;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   justify-content: space-around;
+  position: sticky;
+  bottom: -1px;
+  background-color: #f1f5f8;
 }
 
 .footer-item {
@@ -318,7 +329,8 @@ p {
   font-weight: 500;
 }
 
-.product-price {
+.product-price,
+.dish-price {
   color: #fa4a0c;
   font-weight: 600;
 }
@@ -340,9 +352,30 @@ p {
 }
 
 .cart-bar-container {
-  width: 60%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
+}
+
+.amount-container {
+  position: relative;
+}
+
+.total-amount {
+  background-color: #fa4a0c;
+  width: 22px;
+  height: 22px;
+  border-radius: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #f1f5f8;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -2px;
+  left: 19px;
 }
 
 /* Cart Item */
@@ -399,6 +432,7 @@ p {
   font-size: 1rem;
   font-weight: bold;
   color: #f1f5f8;
+  padding-bottom: 2px;
 }
 
 /* Cart Container */
@@ -410,7 +444,8 @@ p {
   padding: 0 1rem;
   font-weight: bold;
   text-transform: capitalize;
-  margin-bottom: 3rem;
+  margin: 1rem 0 3rem 0;
+  font-size: 1.25rem;
 }
 
 /* delivery component */
