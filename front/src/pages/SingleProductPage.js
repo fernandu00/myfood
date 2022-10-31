@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { dishes } from "../data";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
+import { toast } from "react-toastify";
 
 const SingleProductPage = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const SingleProductPage = () => {
         className="btn"
         onClick={() => {
           dispatch(addItem({ name: product }));
+          toast.success("item adicionado!");
           navigate("/main");
         }}
       >
