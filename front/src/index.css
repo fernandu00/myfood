@@ -190,7 +190,7 @@ p {
   height: 100vh;
 }
 .login-container {
-  height: 50vh;
+  height: 45vh;
   width: 100vw;
   border-radius: 0.8rem;
   padding-bottom: 0.25rem;
@@ -212,16 +212,63 @@ p {
   height: 5vh;
 }
 
-.login-btn {
+.container-btn {
   border: none;
   padding: 0 1rem;
   background-color: transparent;
   text-transform: capitalize;
   color: #222;
+  font-family: var(--ff-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-.login-btn:active {
-  border-bottom: 1px solid #fa4a0c;
+.active {
+  border-bottom: 2px solid #fa4a0c;
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 1.25rem 0;
+  width: 90%;
+}
+
+.login-form input[type="email"],
+input[type="password"],
+.register-form input[type="email"],
+input[type="password"],
+input[type="text"] {
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  margin: 0.75rem 0;
+  padding: 0.25rem;
+}
+
+.login-form label,
+.register-form label {
+  font-family: var(--ff-primary);
+  font-weight: 600;
+  color: #fa4a0c;
+}
+
+.login-form input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+}
+
+.login-form input[type="text"]:active,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+}
+
+.login-btn {
+  margin-top: 1.5rem;
 }
 
 /* main page */
