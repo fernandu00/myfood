@@ -12,7 +12,7 @@ const InitialPage = () => {
 
       <MdFastfood className="food-icon" />
 
-      <Link to="/main" className="btn initial-btn">
+      <Link to="/login" className="btn initial-btn">
         começar
       </Link>
     </main>
