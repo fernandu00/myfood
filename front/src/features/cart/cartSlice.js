@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cartItems } from "../../data";
 const initialState = {
-  cartItems: cartItems,
+  cartItems: [],
   amount: 0,
   total: 0,
   isLoading: true,
@@ -44,7 +44,7 @@ const cartSlice = createSlice({
     },
     addItem: (state, { payload }) => {
       const cartItem = payload.name;
-      cartItem.amount = 1;
+
       const existsInCart = state.cartItems.find(
         (item) => item.id === cartItem.id
       );
@@ -52,6 +52,7 @@ const cartSlice = createSlice({
         existsInCart.amount = existsInCart.amount + 1;
         return;
       }
+      cartItem.amount = 1;
       state.cartItems = [...state.cartItems, cartItem];
     },
   },
