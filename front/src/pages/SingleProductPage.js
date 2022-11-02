@@ -1,21 +1,22 @@
 import React from "react";
-
 import { FaChevronLeft } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { dishes } from "../data";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 import { toast } from "react-toastify";
+import { setCurrentItem } from "../features/menu/menuSlice";
 
 const SingleProductPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { id } = useParams();
 
-  const product = dishes.find((dish) => dish.id === Number(id));
+  const { menuItems, currentItem } = useSelector((store) => store.menu);
 
-  const { price, name, picture, desc } = product;
+  const currentProduct = menuItems.find((item) => item._id === id);
+  const { price, title, picture, desc } = currentProduct;
+
+  dispatch(setCurrentItem(currentProduct));
 
   return (
     <main className="single-product-main">
@@ -25,10 +26,10 @@ const SingleProductPage = () => {
         </Link>
       </div>
 
-      <img src={picture} alt={name} />
+      <img src={picture} alt={title} />
       <div className="info">
-        <h2>{name}</h2>
-        <span className="product-price">$ {price}</span>
+        <h2>{title}</h2>
+        <span className="product-price">R$ {price.toFixed(2)}</span>
       </div>
 
       <div className="details">
@@ -37,7 +38,8 @@ const SingleProductPage = () => {
       <button
         className="btn"
         onClick={() => {
-          dispatch(addItem({ name: product }));
+          dispatch(addItem(currentItem));
+          console.log(currentItem);
           toast.success("item adicionado!");
           navigate("/main");
         }}
