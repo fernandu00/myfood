@@ -10,7 +10,7 @@ const CartContainer = () => {
   return (
     <section className="cart-container">
       {cartItems.map((item) => {
-        return <CartItem key={item.id} {...item} />;
+        return <CartItem key={item._id} {...item} />;
       })}
       <hr />
       <div className="totals">
