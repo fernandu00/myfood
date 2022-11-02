@@ -2,7 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, submitUser } from "../features/user/userSlice";
 import { toast } from "react-toastify";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateCurrentUser,
+  updateProfile,
+} from "firebase/auth";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "./../firebase";
 
@@ -23,14 +28,14 @@ const Register = ({ setLogin }) => {
 
       await setDoc(doc(db, "users", uuid), user);
 
-      console.log(user.id);
+      console.log(user.uuid);
       toast.success("usuário cadastrado no banco");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault();
 
     if (password !== checkpasswd) {
@@ -38,24 +43,33 @@ const Register = ({ setLogin }) => {
       return;
     }
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch(setUser({ uuid: user.uid }));
-        console.log(user.uid);
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
 
-        toast.success("usuário criado com sucesso");
-      })
-      .then(() => {
-        createUserFirestore(auth.currentUser.uid);
-      })
-      .then(() => {
-        setLogin(true);
-      })
+    dispatch(setUser({ uuid: user.uid }));
+    console.log(user);
 
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    const userFirestore = await createUserFirestore(auth.currentUser.uid);
+    setLogin(true);
+
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     dispatch(setUser({ uuid: user.uid }));
+    //     console.log(user.uid);
+
+    //     toast.success("usuário criado com sucesso");
+    //   })
+    //   .then(() => {
+    //     createUserFirestore(auth.currentUser.uid);
+    //   })
+    //   .then(() => {
+    //     setLogin(true);
+    //   })
+
+    //   .catch((error) => {
+    //     toast.error(error.message);
+    //   });
   };
 
   return (

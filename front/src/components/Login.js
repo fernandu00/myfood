@@ -23,24 +23,19 @@ const Login = () => {
     (store) => store.user
   );
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch(setUser({ uuid: user.uid }));
-        console.log(user);
-      })
-      .then(() => {
-        dispatch(setUser({ isLogged: true }));
-
-        navigate("/main");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    try {
+      const auth = getAuth();
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      const user = res.user;
+      dispatch(setUser({ uuid: user.uid }));
+      console.log(user);
+      dispatch(setUser({ isLogged: true }));
+      navigate("/main");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const handleGoogleLogin = () => {
