@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Profile from "../components/Profile";
 import UpdateProfile from "../components/UpdateProfile";
 const ProfilePage = () => {
-  const { name, email } = useSelector((store) => store.user);
   return (
     <main>
       <div className="cart-bar-container">
