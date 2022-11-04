@@ -15,12 +15,24 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     address: {
-      type: String,
-      required: true,
+      line_1: {
+        type: String,
+      },
+      line_2: {
+        type: String,
+      },
+      number: {
+        type: Number,
+      },
+      zipCode: {
+        type: String,
+      },
+      neighboorhood: {
+        type: String,
+      },
     },
     phone: {
       type: Number,
-      required: true,
     },
   },
   { timestamps: true }
