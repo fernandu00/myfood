@@ -27,12 +27,12 @@ const userSchema = new mongoose.Schema(
       zipCode: {
         type: String,
       },
-      neighboorhood: {
+      neighborhood: {
         type: String,
       },
     },
     phone: {
-      type: Number,
+      type: String,
     },
   },
   { timestamps: true }
