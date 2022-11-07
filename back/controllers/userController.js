@@ -10,6 +10,17 @@ const getUsers = async (req, res) => {
   }
 };
 
+// get single user based on uid
+const getSingleUser = async (req, res) => {
+  const { uid } = req.params;
+  try {
+    const user = await userModel.findOne({ uuid: uid });
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({ success: false, msg: error });
+  }
+};
+
 // create a new user
 const createUser = async (req, res) => {
   const { name, email, uuid } = req.body;
@@ -32,7 +43,7 @@ const createUser = async (req, res) => {
   }
 };
 
-// update existing user by id
+// update existing user by uid
 const updateUser = async (req, res) => {
   try {
     const user = await userModel.findOne({ uuid: req.params.uid });
@@ -64,4 +75,10 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getUsers, updateUser, deleteUser };
+module.exports = {
+  createUser,
+  getUsers,
+  updateUser,
+  deleteUser,
+  getSingleUser,
+};
