@@ -5,11 +5,14 @@ const {
   getUsers,
   updateUser,
   deleteUser,
+  getSingleUser,
 } = require("../controllers/userController");
 
 userRoutes.post("/new", createUser);
 
 userRoutes.get("/", getUsers);
+
+userRoutes.get("/:uid", getSingleUser);
 
 userRoutes.patch("/:uid", updateUser);
 
