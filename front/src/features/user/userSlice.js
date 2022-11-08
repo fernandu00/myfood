@@ -15,6 +15,11 @@ const initialState = {
   checkpasswd: null,
   isLogged: false,
   uuid: null,
+  address: null,
+  address2: null,
+  houseNumber: null,
+  zipCode: null,
+  phoneNumber: null,
 };
 
 const userSlice = createSlice({
@@ -40,9 +45,25 @@ const userSlice = createSlice({
       if (payload.uuid) {
         state.uuid = payload.uuid;
       }
+      if (payload.address) {
+        state.address = payload.address;
+      }
+      if (payload.address2) {
+        state.address2 = payload.address2;
+      }
+      if (payload.houseNumber) {
+        state.houseNumber = payload.houseNumber;
+      }
+      if (payload.phoneNumber) {
+        state.phoneNumber = payload.phoneNumber;
+      }
+      if (payload.address) {
+        state.address = payload.address;
+      }
+      if (payload.zipCode) {
+        state.zipCode = payload.zipCode;
+      }
     },
-    submitUser: (state) => {},
-    loginUser: (state) => {},
   },
 });
 
