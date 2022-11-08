@@ -5,6 +5,8 @@ import { RiContactsBookLine } from "react-icons/ri";
 const initialState = {
   menuItems: [],
   currentItem: null,
+  categories: ["todos"],
+  filteredItems: [],
   isLoading: false,
 };
 
@@ -26,6 +28,17 @@ const menuSlice = createSlice({
     setCurrentItem: (state, action) => {
       state.currentItem = action.payload;
     },
+    filterItems: (state, action) => {
+      if (action.payload === "todos".toLowerCase()) {
+        let menu = state.menuItems;
+        state.filteredItems = menu;
+        return;
+      }
+      const filtered = state.menuItems.filter(
+        (item) => item.category === action.payload
+      );
+      state.filteredItems = filtered;
+    },
   },
   extraReducers: {
     [getMenuItems.pending]: (state) => {
@@ -34,6 +47,9 @@ const menuSlice = createSlice({
     [getMenuItems.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.menuItems = action.payload;
+      const cat = state.menuItems.map((item) => item.category);
+      state.categories = ["todos", ...new Set(cat)];
+      state.filteredItems = state.menuItems;
     },
     [getMenuItems.rejected]: (state) => {
       state.isLoading = false;
@@ -41,6 +57,6 @@ const menuSlice = createSlice({
   },
 });
 
-export const { setCurrentItem } = menuSlice.actions;
+export const { setCurrentItem, filterItems } = menuSlice.actions;
 
 export default menuSlice.reducer;
