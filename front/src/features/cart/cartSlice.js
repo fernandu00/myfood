@@ -4,6 +4,7 @@ const initialState = {
   cartItems: [],
   amount: 0,
   total: 0,
+  paymentOption: null,
   isLoading: true,
 };
 
@@ -55,6 +56,9 @@ const cartSlice = createSlice({
       const newCartItem = { ...cartItem, amount: 1 };
       state.cartItems = [...state.cartItems, newCartItem];
     },
+    setPayment: (state, action) => {
+      state.paymentOption = action.payload;
+    },
   },
 });
 
@@ -65,6 +69,7 @@ export const {
   remove,
   calculateTotals,
   addItem,
+  setPayment,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
