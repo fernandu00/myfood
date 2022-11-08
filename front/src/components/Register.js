@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "./../firebase";
+import axios from "axios";
+import { RiContactsBookLine } from "react-icons/ri";
 
 const Register = ({ setLogin }) => {
   const dispatch = useDispatch();
@@ -17,7 +19,30 @@ const Register = ({ setLogin }) => {
     (store) => store.user
   );
 
-  const createUserFirestore = async (uuid) => {
+  const url = "http://localhost:5000/user/new";
+
+  // create firestore user
+  // const createUserFirestore = async (uuid) => {
+  //   try {
+  //     const user = {
+  //       name: name,
+  //       email: email,
+  //       address: null,
+  //       uuid: uuid,
+  //     };
+
+  //     await setDoc(doc(db, "users", uuid), user);
+
+  //     console.log(user.uuid);
+  //     toast.success("usuário cadastrado no banco");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // create user on MongoDB database
+
+  const createUserDb = async (uuid) => {
     try {
       const user = {
         name: name,
@@ -25,51 +50,40 @@ const Register = ({ setLogin }) => {
         address: null,
         uuid: uuid,
       };
-
-      await setDoc(doc(db, "users", uuid), user);
-
-      console.log(user.uuid);
-      toast.success("usuário cadastrado no banco");
+      const res = await axios.post(url, user);
+      console.log(res);
+      if (res.data.success) {
+        toast.success("usuário criado!");
+      }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.msg);
     }
   };
 
+  // register user
   const registerUser = async (e) => {
     e.preventDefault();
-
+    const auth = getAuth();
     if (password !== checkpasswd) {
       toast.error("senhas não conferem");
       return;
     }
-    const auth = getAuth();
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
+    // firebase auth function
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      const user = res.user;
 
-    dispatch(setUser({ uuid: user.uid }));
-    console.log(user);
+      // set uuid on redux
+      dispatch(setUser({ uuid: user.uid }));
+      // register on MongoDB
+      await createUserDb(user.uid);
+      setLogin(true);
+    } catch (error) {
+      toast.error(error.message);
+    }
 
-    const userFirestore = await createUserFirestore(auth.currentUser.uid);
-    setLogin(true);
-
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     const user = userCredential.user;
-    //     dispatch(setUser({ uuid: user.uid }));
-    //     console.log(user.uid);
-
-    //     toast.success("usuário criado com sucesso");
-    //   })
-    //   .then(() => {
-    //     createUserFirestore(auth.currentUser.uid);
-    //   })
-    //   .then(() => {
-    //     setLogin(true);
-    //   })
-
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //   });
+    // register on firestore function
+    // const userFirestore = await createUserFirestore(auth.currentUser.uid);
   };
 
   return (
