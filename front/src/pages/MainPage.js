@@ -10,42 +10,28 @@ import { getAuth, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { getMenuItems, test } from "../features/menu/menuSlice";
+import { filterItems, getMenuItems, test } from "../features/menu/menuSlice";
 
 const MainPage = () => {
-  const { menuItems } = useSelector((store) => store.menu);
+  const { menuItems, categories, filteredItems } = useSelector(
+    (store) => store.menu
+  );
   const dispatch = useDispatch();
 
-  const url = "http://localhost:5000/menu/all";
+  const [active, setActive] = useState(null);
+  // const [categories, setCategories] = useState([]);
 
+  // const getCategories = () => {
+  //   const cat = menuItems.map((item) => item.category);
+  //   setCategories([...new Set(cat)]);
+  // };
+
+  // load menu items from database
   useEffect(() => {
     dispatch(getMenuItems());
   }, []);
 
-  // useEffect(() => {
-  //   const auth = getAuth();
-  //   getRedirectResult(auth)
-  //     .then((result) => {
-  //       // This gives you a Google Access Token. You can use it to access Google APIs.
-  //       const credential = GoogleAuthProvider.credentialFromResult(result);
-  //       const token = credential.accessToken;
-
-  //       // The signed-in user info.
-  //       const user = result.user;
-  //       console.log(user);
-  //     })
-  //     .catch((error) => {
-  //       // Handle Errors here.
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-
-  //       // The AuthCredential type that was used.
-  //       const credential = GoogleAuthProvider.credentialFromError(error);
-  //       // ...
-  //     });
-  // }, []);
-
-  const { amount } = useSelector((store) => store.cart);
+  const { quantity } = useSelector((store) => store.cart);
   return (
     <main className="main">
       <div className="toolbar">
@@ -55,14 +41,32 @@ const MainPage = () => {
             <HiOutlineShoppingCart className="function-icon" />
           </Link>
           <div className="amount-container">
-            <p className="total-amount">{amount}</p>
+            <p className="total-amount">{quantity}</p>
           </div>
         </div>
       </div>
       <h3 className="title-main">Comidas deliciosas pra você!</h3>
-      <Categories />
+
+      <div className="categories-list">
+        {categories.map((cat, index) => {
+          return (
+            <article
+              key={index}
+              // change styles based on state active
+              className={index === active ? "cat-item active" : "cat-item"}
+              onClick={() => {
+                setActive(index);
+                dispatch(filterItems(cat));
+              }}
+            >
+              {cat}
+            </article>
+          );
+        })}
+      </div>
+
       <div className="dishes-container">
-        {menuItems.map((dish) => {
+        {filteredItems.map((dish) => {
           return <Dish key={dish._id} {...dish} />;
         })}
       </div>

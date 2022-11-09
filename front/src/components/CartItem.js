@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { increase, remove, decrease } from "../features/cart/cartSlice";
-const CartItem = ({ title, price, picture, amount, _id }) => {
+const CartItem = ({ title, unit_price, picture, quantity, _id }) => {
   const dispatch = useDispatch();
 
   return (
@@ -21,12 +21,12 @@ const CartItem = ({ title, price, picture, amount, _id }) => {
 
       <div className="cart-details">
         <h4>{title}</h4>
-        <span className="product-price">R$ {price.toFixed(2)}</span>
+        <span className="product-price">R$ {unit_price.toFixed(2)}</span>
         <div className="toggle-item">
           <button
             className="toggle-btn"
             onClick={() => {
-              if (amount === 1) {
+              if (quantity === 1) {
                 dispatch(remove(_id));
                 return;
               }
@@ -35,7 +35,7 @@ const CartItem = ({ title, price, picture, amount, _id }) => {
           >
             <FaMinus />
           </button>
-          <span className="quantity">{amount}</span>
+          <span className="quantity">{quantity}</span>
           <button
             className="toggle-btn"
             onClick={() => {

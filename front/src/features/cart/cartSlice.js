@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { cartItems } from "../../data";
 const initialState = {
   cartItems: [],
-  amount: 0,
+  quantity: 0,
   total: 0,
   paymentOption: null,
   isLoading: true,
@@ -19,13 +19,13 @@ const cartSlice = createSlice({
       const cartItem = state.cartItems.find(
         (item) => item._id === action.payload
       );
-      cartItem.amount = cartItem.amount + 1;
+      cartItem.quantity = cartItem.quantity + 1;
     },
     decrease: (state, action) => {
       const cartItem = state.cartItems.find(
         (item) => item._id === action.payload
       );
-      cartItem.amount = cartItem.amount - 1;
+      cartItem.quantity = cartItem.quantity - 1;
     },
     remove: (state, action) => {
       const newItems = state.cartItems.filter(
@@ -34,13 +34,13 @@ const cartSlice = createSlice({
       state.cartItems = newItems;
     },
     calculateTotals: (state) => {
-      let amount = 0;
+      let quantity = 0;
       let total = 0;
       state.cartItems.forEach((item) => {
-        amount += item.amount;
-        total += item.price * item.amount;
+        quantity += item.quantity;
+        total += item.unit_price * item.quantity;
       });
-      state.amount = amount;
+      state.quantity = quantity;
       state.total = total;
     },
     addItem: (state, action) => {
@@ -50,10 +50,10 @@ const cartSlice = createSlice({
         (item) => item._id === cartItem._id
       );
       if (existsInCart) {
-        existsInCart.amount = existsInCart.amount + 1;
+        existsInCart.quantity = existsInCart.quantity + 1;
         return;
       }
-      const newCartItem = { ...cartItem, amount: 1 };
+      const newCartItem = { ...cartItem, quantity: 1 };
       state.cartItems = [...state.cartItems, newCartItem];
     },
     setPayment: (state, action) => {

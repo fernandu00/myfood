@@ -9,7 +9,7 @@ import { calculateTotals } from "../features/cart/cartSlice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  const { amount, cartItems } = useSelector((store) => store.cart);
+  const { quantity, cartItems } = useSelector((store) => store.cart);
 
   return (
     <main className="cart-main">
@@ -21,7 +21,7 @@ const CartPage = () => {
         <div className="cart-icon-container">
           <HiOutlineShoppingCart className="function-icon" />
           <div className="amount-container">
-            <p className="total-amount">{amount}</p>
+            <p className="total-amount">{quantity}</p>
           </div>
         </div>
       </div>

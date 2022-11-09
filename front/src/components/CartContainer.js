@@ -4,7 +4,7 @@ import CartItem from "./CartItem";
 import { clearCart } from "../features/cart/cartSlice";
 
 const CartContainer = () => {
-  const { amount, total, cartItems } = useSelector((store) => store.cart);
+  const { quantity, total, cartItems } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
   return (

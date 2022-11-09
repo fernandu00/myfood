@@ -14,7 +14,7 @@ const SingleProductPage = () => {
   const { menuItems, currentItem } = useSelector((store) => store.menu);
 
   const currentProduct = menuItems.find((item) => item._id === id);
-  const { price, title, picture, desc } = currentProduct;
+  const { unit_price, title, picture, desc } = currentProduct;
 
   dispatch(setCurrentItem(currentProduct));
 
@@ -29,7 +29,7 @@ const SingleProductPage = () => {
       <img src={picture} alt={title} />
       <div className="info">
         <h2>{title}</h2>
-        <span className="product-price">R$ {price.toFixed(2)}</span>
+        <span className="product-price">R$ {unit_price.toFixed(2)}</span>
       </div>
 
       <div className="details">
