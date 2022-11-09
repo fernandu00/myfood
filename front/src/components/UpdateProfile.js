@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../features/user/userSlice";
 import { doc, updateDoc, collection, addDoc, setDoc } from "firebase/firestore";
@@ -10,12 +9,17 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const UpdateProfile = () => {
-  const { name, email, uuid } = useSelector((store) => store.user);
-  const [address, setAddress] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [houseNumber, setHouseNumber] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const {
+    name,
+    email,
+    uuid,
+    address,
+    address2,
+    houseNumber,
+    phoneNumber,
+    zipCode,
+  } = useSelector((store) => store.user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,12 +29,13 @@ const UpdateProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       const res = await axios.get(`${url}/${uuid}`);
+      console.log(res.data);
       dispatch(setUser({ name: res.data.name }));
-      setAddress(res.data.address.line_1);
-      setAddress2(res.data.address.line_2);
-      setHouseNumber(res.data.address.number);
-      setZipCode(res.data.address.zipCode);
-      setPhoneNumber(res.data.phone);
+      dispatch(setUser({ address: res.data.address.line_1 }));
+      dispatch(setUser({ address2: res.data.address.line_2 }));
+      dispatch(setUser({ houseNumber: res.data.address.number }));
+      dispatch(setUser({ zipCode: res.data.address.zipCode }));
+      dispatch(setUser({ phoneNumber: res.data.phone }));
     };
     fetchUserData();
   }, []);
@@ -48,7 +53,8 @@ const UpdateProfile = () => {
         },
         phone: phoneNumber,
       };
-      await axios.patch(`${url}/${uuid}`, data);
+      const response = await axios.patch(`${url}/${uuid}`, data);
+      console.log(response.data);
       toast.success("usuário atualizado");
       navigate("/main");
     } catch (error) {
@@ -101,7 +107,7 @@ const UpdateProfile = () => {
             type="text"
             id="address"
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => dispatch(setUser({ address: e.target.value }))}
           />
         </label>
         <label htmlFor="address">
@@ -110,7 +116,7 @@ const UpdateProfile = () => {
             type="text"
             id="address"
             value={address2}
-            onChange={(e) => setAddress2(e.target.value)}
+            onChange={(e) => dispatch(setUser({ address2: e.target.value }))}
           />
         </label>
         <label htmlFor="housenumber">
@@ -119,7 +125,7 @@ const UpdateProfile = () => {
             type="number"
             id="housenumber"
             value={houseNumber}
-            onChange={(e) => setHouseNumber(e.target.value)}
+            onChange={(e) => dispatch(setUser({ houseNumber: e.target.value }))}
           />
         </label>
         <label htmlFor="zip">
@@ -129,7 +135,7 @@ const UpdateProfile = () => {
             size="10"
             id="zip"
             value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
+            onChange={(e) => dispatch(setUser({ zipCode: e.target.value }))}
           />
         </label>
         <label htmlFor="phone">
@@ -139,7 +145,7 @@ const UpdateProfile = () => {
             size="11"
             id="phone"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => dispatch(setUser({ phoneNumber: e.target.value }))}
           />
         </label>
       </div>
