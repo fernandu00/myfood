@@ -3,30 +3,28 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema(
   {
     user: {
-      email: {
-        type: String,
-        required: true,
-      },
-      uuid: {
-        type: String,
-        required: true,
-      },
-      address: {
-        type: String,
-        required: true,
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
     },
     items: {
-      type: [String],
+      type: Array,
       required: true,
     },
-    amount: {
+    quantity: {
       type: Number,
       required: true,
     },
     total: {
       type: Number,
       required: true,
+    },
+    paymentOption: {
+      type: String,
+      required: true,
+    },
+    paid: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

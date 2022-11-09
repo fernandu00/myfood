@@ -8,13 +8,19 @@ const getItems = async (req, res) => {
 
 // create a menu item
 const createDish = async (req, res) => {
-  const { title, desc, category, price, picture } = req.body;
-  if (!title || !desc || !category || !price || !picture) {
+  const { title, desc, category, unit_price, picture } = req.body;
+  if (!title || !desc || !category || !unit_price || !picture) {
     return res.status(500).json({ success: false, msg: "request incomplete" });
   }
 
   try {
-    const newDish = new dishModel({ title, desc, category, price, picture });
+    const newDish = new dishModel({
+      title,
+      desc,
+      category,
+      unit_price,
+      picture,
+    });
     await newDish.save();
     return res.status(201).json({ success: true, msg: newDish });
   } catch (error) {

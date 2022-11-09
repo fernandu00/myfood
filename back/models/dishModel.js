@@ -10,7 +10,7 @@ const dishSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price: {
+  unit_price: {
     type: Number,
     required: true,
   },
@@ -25,6 +25,10 @@ const dishSchema = new mongoose.Schema({
   picture: {
     type: String,
     required: true,
+  },
+  currency_id: {
+    type: String,
+    default: "BRL",
   },
 });
 
