@@ -48,13 +48,14 @@ const updateUser = async (req, res) => {
   try {
     const user = await userModel.findOne({ uuid: req.params.uid });
     if (user) {
-      const updatedUser = await userModel.findOneAndUpdate(
-        req.params.uid,
+      const updatedUser = await userModel.updateOne(
+        user,
         {
           $set: req.body,
         },
         { new: true }
       );
+
       return res.status(201).json({ success: true, msg: updatedUser });
     } else {
       res.status(400).json({ success: false, msg: "user not found" });
