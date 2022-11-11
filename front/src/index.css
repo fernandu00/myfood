@@ -71,29 +71,11 @@ h4 {
 p {
   margin-bottom: 1.25rem;
 }
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 2rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-  body {
-    font-size: 1rem;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1;
-  }
+li {
+  text-decoration: none;
+  list-style-type: none;
 }
+
 /* more global css */
 
 .btn {
@@ -223,10 +205,6 @@ p {
   font-weight: 600;
 }
 
-.active {
-  border-bottom: 2px solid #fa4a0c;
-}
-
 .login-form,
 .register-form {
   display: flex;
@@ -290,6 +268,7 @@ input[type="email"]:focus {
   grid-template-columns: repeat(2, 1fr);
   place-items: center;
   gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .title-main {
@@ -312,15 +291,12 @@ input[type="email"]:focus {
   color: #aaa;
   font-family: var(--ff-primary);
   font-weight: 600;
-}
-
-.cat-item:active {
-  border-bottom: 3px solid #fa4a0c;
+  text-transform: capitalize;
 }
 
 /* dish component */
 .dish {
-  margin: 1rem;
+  margin: 0.5rem;
   max-width: 400px;
 }
 
@@ -333,7 +309,7 @@ input[type="email"]:focus {
 
 .dish-img {
   width: 25vw;
-  height: 10vh;
+  min-height: 10vh;
   border-radius: 0.3rem;
 }
 
@@ -346,7 +322,7 @@ input[type="email"]:focus {
   height: 5vh;
   padding: 1.5rem 1rem;
   justify-content: space-around;
-  position: sticky;
+  position: fixed;
   bottom: -1px;
   background-color: #f1f5f8;
 }
@@ -565,7 +541,7 @@ input[type="email"] {
   padding: 0.5rem;
   border: none;
   border-bottom: 1px solid #bbb;
-
+  font-size: 1.25rem;
   width: 100%;
 }
 
@@ -583,4 +559,61 @@ input[type="email"]:focus {
 .btn-container {
   display: flex;
   justify-content: center;
+}
+
+.active {
+  border-bottom: 2px solid #fa4a0c;
+}
+
+/* order history page */
+
+.order-history-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Order Paid Page */
+
+.single-order-main {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  padding: 1rem;
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+
+  .main-page {
+    background-color: var(--clr-primary);
+    display: grid;
+    width: 50vw;
+    place-items: center;
+    height: 100vh;
+  }
 }
