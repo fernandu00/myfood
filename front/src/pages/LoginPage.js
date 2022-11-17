@@ -23,14 +23,15 @@ const LoginPage = () => {
   const { email, password, checkpasswd, isLogged } = useSelector(
     (store) => store.user
   );
-
+  // login with Google Account
   const handleGoogleLogin = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider).then(() => navigate("/main"));
   };
 
-  const [login, setLogin] = useState(true);
+  // state to change components between Register and Login
+  const [login, setLogin] = useState(false);
 
   return (
     <>

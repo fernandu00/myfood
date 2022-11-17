@@ -14,7 +14,9 @@ const CheckoutDeliveryPage = () => {
   const { uuid } = useSelector((store) => store.user);
   // const url = "http://localhost:5000/order/new";
 
-  const url = "http://localhost:5000/payment";
+  // const url = "http://localhost:5000/payment";
+
+  const url = "http://192.168.15.14:5000/payment";
 
   const createOrder = async (e) => {
     e.preventDefault();
