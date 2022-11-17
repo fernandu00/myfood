@@ -19,9 +19,13 @@ import OrdersPage from "./pages/OrdersPage";
 import { setUser } from "./features/user/userSlice";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import OrderPagePaid from "./pages/OrderPagePaid";
+import AdminMain from "./pages/AdminMain";
+import AdminToGo from "./pages/AdminToGo";
+import AdminOrderHistory from "./pages/AdminOrderHistory";
 function App() {
   const dispatch = useDispatch();
   const { amount, cartItems } = useSelector((store) => store.cart);
+  const { isAdmin } = useSelector((store) => store.user);
 
   // update cart total
   useEffect(() => {
@@ -82,6 +86,11 @@ function App() {
           }
         />
         <Route path="/paid/:id" element={<OrderPagePaid />} />
+        {isAdmin && <Route path="/admin/main" element={<AdminMain />} />}
+        {isAdmin && <Route path="/admin/togo" element={<AdminToGo />} />}
+        {isAdmin && (
+          <Route path="/admin/orderhistory" element={<AdminOrderHistory />} />
+        )}
       </Routes>
     </>
   );
