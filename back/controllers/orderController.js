@@ -2,7 +2,7 @@ const orderModel = require("./../models/orderModel");
 const userModel = require("./../models/userModel");
 
 // create a new order
-const createOrder = async (req, res, next) => {
+const createOrder = async (req, res) => {
   const { items, uuid, quantity, total, paymentOption } = req.body;
 
   const user = await userModel.findOne({ uuid: uuid });
@@ -34,22 +34,22 @@ const createOrder = async (req, res, next) => {
       quantity,
       total,
       paymentOption,
-      user,
+      user: user._id,
     });
     await newOrder.save();
-    // return res.status(201).json({ success: true, msg: newOrder });
+    return res.status(201).json({ success: true, msg: newOrder });
     req.order = newOrder;
   } catch (error) {
     res.json(error);
     return res.status(500).json({ success: false, msg: error });
   }
-  next();
+  // next();
 };
 
 // get order all orders
 
 const getOrders = async (req, res) => {
-  const orders = await orderModel.find({});
+  const orders = await orderModel.find({}).populate("user");
   res.status(200).json({ success: true, msg: orders });
 };
 
