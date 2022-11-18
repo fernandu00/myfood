@@ -46,22 +46,14 @@ const createUser = async (req, res) => {
 // update existing user by uid
 const updateUser = async (req, res) => {
   try {
-    const user = await userModel.findOne({ uuid: req.params.uid });
-    if (user) {
-      const updatedUser = await userModel.updateOne(
-        user,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
+    const user = await userModel.findOneAndUpdate(
+      { uuid: req.params.uid },
+      { $set: req.body }
+    );
 
-      return res.status(201).json({ success: true, msg: updatedUser });
-    } else {
-      res.status(400).json({ success: false, msg: "user not found" });
-    }
+    return res.status(201).json({ success: true, msg: user });
   } catch (error) {
-    return res.status(500).json({ success: false, msg: error });
+    return res.status(500).json({ success: false, msg: error.message });
   }
 };
 
