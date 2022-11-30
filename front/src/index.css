@@ -103,6 +103,20 @@ li {
   color: #fa4a0c;
 }
 
+.delete-btn {
+  background-color: #ff0000;
+  color: #f1f5f8;
+  margin: 0.75rem 0;
+}
+
+.modal-btn {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.success {
+  background-color: #007c00;
+}
 /* Initial Page */
 
 .icon {
@@ -218,7 +232,8 @@ li {
 input[type="password"],
 .register-form input[type="email"],
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+textarea {
   font-size: 1.5rem;
   border: none;
   border-radius: 0.3rem;
@@ -353,7 +368,8 @@ input[type="email"]:focus {
 }
 
 .product-price,
-.dish-price {
+.dish-price,
+.clients-name {
   color: #fa4a0c;
   font-weight: 600;
 }
@@ -489,7 +505,7 @@ input[type="email"]:focus {
 }
 
 .info {
-  border-bottom: 1px solid #bbb;
+  /* border-bottom: 1px solid #bbb; */
   color: #222;
   font-size: 1rem;
   padding: 0.25rem;
@@ -586,6 +602,100 @@ input[type="email"]:focus {
   display: flex;
   justify-content: space-between;
 }
+
+/* order admin main */
+
+.orders-admin {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  display: grid;
+}
+
+.done {
+  align-self: center;
+  margin: 0.5rem auto;
+}
+
+/* edit single product page */
+
+.update-product input[type="number"],
+input[type="file"],
+input[type="text"],
+textarea {
+  width: 99%;
+  border-bottom: none;
+}
+.update-product {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-product label {
+  font-size: 1.25rem;
+  font-family: var(--ff-primary);
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+.update-product input[type="number"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+}
+
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-element {
+  position: relative;
+  top: 45%;
+  left: 15%;
+  background-color: #f1f5f8;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  max-width: 65vw;
+}
+
+.modal-element h4 {
+  text-transform: lowercase;
+}
+
+.modal-element h4::first-letter {
+  text-transform: uppercase;
+}
+/* add icon */
+
+.AddIcon {
+  width: 4rem;
+  height: 4rem;
+  color: #312e3c;
+}
+
+.add-dish {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* new item page */
+
+.img-new-item {
+}
+
+.img-edit-product {
+  max-height: 20rem;
+}
+
+.add-image-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;

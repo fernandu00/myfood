@@ -1,28 +1,25 @@
 import React from "react";
-import { MdFastfood } from "react-icons/md";
 import GoogleButton from "react-google-button";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, submitUser, loginUser } from "../features/user/userSlice";
+import { setUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { toast } from "react-toastify";
 import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithRedirect,
   GoogleAuthProvider,
-  getRedirectResult,
 } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "./../firebase";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { email, password, checkpasswd, isLogged, uuid, name } = useSelector(
-    (store) => store.user
-  );
+  const { email, password, isAdmin } = useSelector((store) => store.user);
 
+  const url = "http://192.168.15.14:5000/user";
+
+  // Login with email and password
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -32,16 +29,41 @@ const Login = () => {
       dispatch(setUser({ uuid: user.uid }));
       console.log(user);
       dispatch(setUser({ isLogged: true }));
-      navigate("/main");
+      const role = await axios.get(`${url}/${user.uid}`);
+      console.log(role);
+      dispatch(setUser({ isAdmin: role.data.isAdmin }));
+      {
+        role.data.isAdmin === true
+          ? navigate("/admin/main")
+          : navigate("/main");
+      }
     } catch (error) {
       toast.error(error.message);
     }
   };
 
-  const handleGoogleLogin = () => {
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider).then(navigate("/main"));
+  // Login with Google Account
+  const handleGoogleLogin = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      const res = await signInWithRedirect(auth, provider);
+      const user = res.user;
+      console.log(user);
+      dispatch(setUser({ uuid: user.uid }));
+      console.log(user);
+      dispatch(setUser({ isLogged: true }));
+      const role = await axios.get(`${url}/${user.uid}`);
+      console.log(role);
+      dispatch(setUser({ isAdmin: role.data.isAdmin }));
+      {
+        role.data.isAdmin === true
+          ? navigate("/admin/main")
+          : navigate("/main");
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -65,9 +87,9 @@ const Login = () => {
         </button>
       </form>
 
-      <div>
+      {/* <div>
         <GoogleButton onClick={handleGoogleLogin} />
-      </div>
+      </div> */}
     </>
   );
 };

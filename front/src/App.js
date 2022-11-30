@@ -22,6 +22,9 @@ import OrderPagePaid from "./pages/OrderPagePaid";
 import AdminMain from "./pages/AdminMain";
 import AdminToGo from "./pages/AdminToGo";
 import AdminOrderHistory from "./pages/AdminOrderHistory";
+import AdminAddMenuItem from "./pages/AdminAddMenuItem";
+import AdminEditSingleProduct from "./pages/AdminEditSingleProduct";
+import AdminAddNewItem from "./pages/AdminAddNewItem";
 function App() {
   const dispatch = useDispatch();
   const { amount, cartItems } = useSelector((store) => store.cart);
@@ -86,10 +89,63 @@ function App() {
           }
         />
         <Route path="/paid/:id" element={<OrderPagePaid />} />
-        {isAdmin && <Route path="/admin/main" element={<AdminMain />} />}
-        {isAdmin && <Route path="/admin/togo" element={<AdminToGo />} />}
         {isAdmin && (
-          <Route path="/admin/orderhistory" element={<AdminOrderHistory />} />
+          <Route
+            path="/admin/main"
+            element={
+              <ProtectedRoute>
+                <AdminMain />
+              </ProtectedRoute>
+            }
+          />
+        )}
+        {isAdmin && (
+          <Route
+            path="/admin/togo"
+            element={
+              <ProtectedRoute>
+                <AdminToGo />
+              </ProtectedRoute>
+            }
+          />
+        )}
+        {isAdmin && (
+          <Route
+            path="/admin/orderhistory"
+            element={
+              <ProtectedRoute>
+                <AdminOrderHistory />
+              </ProtectedRoute>
+            }
+          />
+        )}
+        {isAdmin && (
+          <Route
+            path="/admin/menu/new"
+            element={
+              <ProtectedRoute>
+                <AdminAddMenuItem />
+              </ProtectedRoute>
+            }
+          />
+        )}
+        <Route
+          path="/admin/menu/:id"
+          element={
+            <ProtectedRoute>
+              <AdminEditSingleProduct />
+            </ProtectedRoute>
+          }
+        />
+        {isAdmin && (
+          <Route
+            path="/admin/menu/add"
+            element={
+              <ProtectedRoute>
+                <AdminAddNewItem />
+              </ProtectedRoute>
+            }
+          />
         )}
       </Routes>
     </>

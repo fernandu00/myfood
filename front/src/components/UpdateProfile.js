@@ -23,7 +23,9 @@ const UpdateProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const url = "http://localhost:5000/user";
+  // const url = "http://localhost:5000/user";
+
+  const url = "http://192.168.15.14:5000/user";
 
   // fetch user data
   useEffect(() => {
@@ -54,7 +56,6 @@ const UpdateProfile = () => {
         phone: phoneNumber,
       };
       const response = await axios.patch(`${url}/${uuid}`, data);
-      console.log(response.data);
       toast.success("usuário atualizado");
       navigate("/main");
     } catch (error) {

@@ -15,6 +15,7 @@ const initialState = {
   checkpasswd: null,
   isLogged: false,
   uuid: null,
+  isAdmin: false,
   address: null,
   address2: null,
   houseNumber: null,
@@ -44,6 +45,9 @@ const userSlice = createSlice({
       }
       if (payload.uuid) {
         state.uuid = payload.uuid;
+      }
+      if (payload.isAdmin) {
+        state.isAdmin = payload.isAdmin;
       }
       if (payload.address) {
         state.address = payload.address;

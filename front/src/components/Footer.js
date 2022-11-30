@@ -1,5 +1,11 @@
 import React from "react";
-import { FaHome, FaRegHeart, FaRegUser, FaMotorcycle } from "react-icons/fa";
+import {
+  FaHome,
+  FaRegHeart,
+  FaRegUser,
+  FaMotorcycle,
+  FaHamburger,
+} from "react-icons/fa";
 import { BsClockHistory } from "react-icons/bs";
 import { RiHistoryFill } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
@@ -36,6 +42,11 @@ const Footer = () => {
       ) : (
         <Link to="/history">
           <RiHistoryFill className="function-icon footer-item" />
+        </Link>
+      )}
+      {isAdmin && (
+        <Link to="/admin/menu/new">
+          <FaHamburger className="function-icon footer-item" />
         </Link>
       )}
     </footer>

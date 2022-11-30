@@ -36,7 +36,7 @@ const AdminOrderHistoryComponent = () => {
           return (
             <article key={order._id}>
               <h5>Pedido: {order._id}</h5>
-              <h5>Cliente: {order.user.name}</h5>
+              <h5 style={{ color: "orange" }}>Cliente: {order.user.name}</h5>
               <h5>
                 Endereço: {order.user.address.line_1},{" "}
                 {order.user.address.line_2}, {order.user.address.number}

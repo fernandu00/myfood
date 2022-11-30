@@ -10,11 +10,12 @@ const initialState = {
   isLoading: false,
 };
 
-const url = "http://localhost:5000/menu/all";
+// const url = "http://localhost:5000/menu/all";
+const url = "http://192.168.15.14:5000/menu";
 
 export const getMenuItems = createAsyncThunk("menu/getMenuItems", async () => {
   try {
-    const res = await axios(url);
+    const res = await axios(`${url}/all`);
     return res.data;
   } catch (error) {
     console.log(error);

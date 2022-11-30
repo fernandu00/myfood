@@ -6,7 +6,6 @@ import Dish from "../components/Dish";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuth, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";

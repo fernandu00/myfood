@@ -3,7 +3,7 @@ const axios = require("axios");
 const createPayment = async (req, res) => {
   const order = req.order;
   const url = "https://api.mercadopago.com/checkout/preferences";
-
+  console.log(order);
   const body = {
     payer_email: order.user.email,
     items: order.items,
@@ -23,7 +23,7 @@ const createPayment = async (req, res) => {
     },
 
     back_urls: {
-      success: "http://localhost:3000/main",
+      success: `http://192.168.15.14:3000/paid/${order._id}`,
       failure: "http://www.failure.com",
       pending: "http://www.pending.com",
     },
