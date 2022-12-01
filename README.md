@@ -12,7 +12,7 @@ The API has the following routes:
 
 ##### Create User Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 var data = JSON.stringify({
 "name": "John Doe",
 "email": "john@gmail.com",
@@ -40,11 +40,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### List all users Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 
 var config = {
 method: 'get',
@@ -58,11 +58,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### List single user by uuid Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 
 var config = {
 method: 'get',
@@ -76,11 +76,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### Update user Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 var data = JSON.stringify({
 "isAdmin": true
 });
@@ -100,11 +100,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### Delete user Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 
 var config = {
 method: 'delete',
@@ -118,13 +118,13 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 #### Menu Routes
 
 ##### Create a dish Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 var data = '{\n "title": "X - Tudo",\n "desc": "Lanche com dois hambúrgueres, alface, queijo, alface, tomate, bancon e ovo",\n "unit*price": 19.9,\n "category": "lanches",\n "ingredients": [],\n "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hamburger*%28black*bg%29.jpg/375px-Hamburger*%28black_bg%29.jpg",\n}';
 
 var config = {
@@ -142,11 +142,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### List all menu Items Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 
 var config = {
 method: 'get',
@@ -160,11 +160,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### Update menu Item Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 var data = JSON.stringify({
 "description": "Guaraná Dolly 2L"
 });
@@ -184,11 +184,11 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 ##### Delete menu item by it's id Route:
 
-var axios = require('axios');
+`var axios = require('axios');
 
 var config = {
 method: 'delete',
@@ -202,7 +202,7 @@ console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
 console.log(error);
-});
+});`
 
 #### Order Routes
 
