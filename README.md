@@ -1,6 +1,6 @@
 # MyFood food ordering app
 
-Fullstack application created as an ifood clone in order to empower small businesses with a lower cost solution to manage orders and provide a web solution to their clients.
+Fullstack application created as an ifood clone in order to empower small businesses with a lower cost solution to manage orders and provide a web solution to their clients. This app includes payment integration with Mercado Pago's gateway.
 
 ### Frontend
 
@@ -35,8 +35,29 @@ Some App functionalities
 ###### Empty Cart
 
 ![empty cart](./images/empty_cart.png "empty cart")
-
+Item added
 ![item added](./images/added_item.png "item added toast")
+
+###### Cart with Items
+
+![cart with items](./images/cart_with_items.png)
+
+###### Profile Page
+
+![profile](./images/profile.png)
+
+###### Order History Page
+
+![order history](./images/order_history_customer.png)
+
+###### Order Review Page
+
+![order review](./images/order_review_2.png)
+
+##### Payment Page
+
+![payment](./images/payment_MP_1.png)
+![payment 2](./images/payment_MP_2.png)
 
 ### Backend
 
