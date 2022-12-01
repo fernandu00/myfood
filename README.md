@@ -4,7 +4,7 @@ Fullstack application created as an ifood clone in order to empower small busine
 
 ### Frontend
 
-The Frontend was developed using ReactJs and Redux to manage the states.
+The Frontend was developed using ReactJs and Redux to manage various states such as the user and the menu.
 
 #### Screens
 
@@ -429,4 +429,24 @@ axios(config)
   });
 ```
 
-<!-- 've used React for the frontend, Redux to manage the various states such as user's states, menu and order states. I've used Firebase to handle user's login and authorization but created a Nodejs API with all the routes and controllers alongside with mongoose and MongoDB Database to handle user's, order's and payment's data. Lastly, I've managed to integrate the Mercado Pago payment gateway in Node to my application. -->
+##### Delete Order by id Route:
+
+```js
+var axios = require("axios");
+
+var config = {
+  method: "delete",
+  url: "localhost:5000/order/636b96ba3486538d3eda2078",
+  headers: {},
+};
+
+axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+If you have any questions or suggestions please contact me!
