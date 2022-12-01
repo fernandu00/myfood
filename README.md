@@ -40,24 +40,50 @@ Item added
 
 ###### Cart with Items
 
-![cart with items](./images/cart_with_items.png)
+![cart with items](./images/cart_with_items.png "cart with items")
 
 ###### Profile Page
 
-![profile](./images/profile.png)
+![profile](./images/profile.png "user profile")
 
 ###### Order History Page
 
-![order history](./images/order_history_customer.png)
+![order history](./images/order_history_customer.png "user order history")
 
 ###### Order Review Page
 
-![order review](./images/order_review_2.png)
+![order review](./images/order_review_2.png "review your order page")
 
-##### Payment Page
+###### Payment Page
 
-![payment](./images/payment_MP_1.png)
-![payment 2](./images/payment_MP_2.png)
+![payment](./images/payment_MP_1.png "payment page")
+![payment 2](./images/payment_MP_2.png "payment page")
+
+##### Admin Pages
+
+###### Admin Main
+
+![admin main](./images/admin_homescreen.png "admin homescreen")
+
+###### Admin Orders to deliver
+
+![admin orders to go](./images/admin_order_to_go.png "admin page order to go")
+
+##### Admin Order History
+
+![admin order history](./images/admin_order_history.png "admin order history")
+
+##### Admin Menu Page
+
+![admin menu](./images/admin_menu.png "admin menu")
+
+##### Add Menu Item
+
+![add menu item](./images/admin_add_item_2.png "add menu item")
+
+##### Edit Menu Item
+
+![edit menu item](./images/admin_edit_item.png "edit menu item")
 
 ### Backend
 
