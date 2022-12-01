@@ -2,6 +2,42 @@
 
 Fullstack application created as an ifood clone in order to empower small businesses with a lower cost solution to manage orders and provide a web solution to their clients.
 
+### Frontend
+
+The Frontend was developed using ReactJs and Redux to manage the states.
+
+#### Screens
+
+Some App functionalities
+
+![initial screen](./images/initial.png "Initial page")
+
+##### Register and Login
+
+![register screen](./images/register.png "register page")
+![login screen](./images/login.png "login page")
+
+##### Customer Pages
+
+###### Menu
+
+![main page](./images/menu_costumer.png "menu customer")
+
+###### Menu with filtered items
+
+![menu filtered items](./images/filtered_categories.png "filtered by categories")
+![menu filtered items](./images/filtered_categories_2.png "filtered by categories 2")
+
+###### Single Product Page
+
+![single product page](./images/single_product_page.png "single product page")
+
+###### Empty Cart
+
+![empty cart](./images/empty_cart.png "empty cart")
+
+![item added](./images/added_item.png "item added toast")
+
 ### Backend
 
 The Backend was developed using Nodejs, Express and MongoDB. Firebase was used for authorizarion.
